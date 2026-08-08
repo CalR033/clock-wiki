@@ -16,18 +16,12 @@
 (package-initialize)
 
 ;;; ============================================================
-;; 2. use-package による ox-hugo のロード
-;;    (use-package がない場合は下の "代替設定" を使用)
+;; 2. leaf による ox-hugo のロード
 ;;; ============================================================
 
-;; --- use-package を使う場合 (推奨) ---
-(use-package ox-hugo
+(leaf ox-hugo
   :ensure t          ; MELPA から自動インストール
   :after ox)         ; ox (Org Export) のロード後に有効化
-
-;; --- use-package を使わない場合の代替設定 ---
-;; (with-eval-after-load 'ox
-;;   (require 'ox-hugo))
 
 ;;; ============================================================
 ;; 3. ox-hugo の基本設定
