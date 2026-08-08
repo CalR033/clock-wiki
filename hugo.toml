@@ -1,0 +1,52 @@
+baseURL = 'https://clock-wiki.pages.dev/'
+languageCode = 'ja'
+title = '時計の事典 - Clocks & Watches Wiki'
+defaultContentLanguage = 'ja'
+hasCJKLanguage = true
+timeZone = 'Asia/Tokyo'
+enableRobotsTXT = true
+enableGitInfo = false
+
+[params]
+  description = '時計・ウォッチに関する総合事典サイト'
+  author = 'Clock Wiki Team'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true   # Allow raw HTML in org/markdown content
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = true
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  section = ['HTML', 'RSS']
+  taxonomy = ['HTML', 'RSS']
+  term = ['HTML', 'RSS']
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[menu]
+  [[menu.main]]
+    identifier = 'home'
+    name = 'ホーム'
+    url = '/'
+    weight = 10
+  [[menu.main]]
+    identifier = 'posts'
+    name = '記事一覧'
+    url = '/posts/'
+    weight = 20
+  [[menu.main]]
+    identifier = 'categories'
+    name = 'カテゴリー'
+    url = '/categories/'
+    weight = 30
+  [[menu.main]]
+    identifier = 'tags'
+    name = 'タグ'
+    url = '/tags/'
+    weight = 40

@@ -1,0 +1,75 @@
+;;; emacs-setup.el --- ox-hugo configuration for 時計の事典 (clock-wiki)
+;;
+;; このファイルを Emacs の init.el (または ~/.emacs.d/init.el) に
+;; (load "C:/Users/nszwt/clock-wiki/emacs-setup.el") で読み込んでください。
+;;
+;; 必要パッケージ: ox-hugo (MELPA 経由)
+;;   M-x package-install RET ox-hugo RET
+
+;;; ============================================================
+;; 1. パッケージシステムの設定 (すでに設定済みならスキップ)
+;;; ============================================================
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;;; ============================================================
+;; 2. use-package による ox-hugo のロード
+;;    (use-package がない場合は下の "代替設定" を使用)
+;;; ============================================================
+
+;; --- use-package を使う場合 (推奨) ---
+(use-package ox-hugo
+  :ensure t          ; MELPA から自動インストール
+  :after ox)         ; ox (Org Export) のロード後に有効化
+
+;; --- use-package を使わない場合の代替設定 ---
+;; (with-eval-after-load 'ox
+;;   (require 'ox-hugo))
+
+;;; ============================================================
+;; 3. ox-hugo の基本設定
+;;; ============================================================
+
+;; Hugo プロジェクトのルートディレクトリ (Windows 絶対パス)
+;; ※ バックスラッシュではなくスラッシュを使うこと
+(setq org-hugo-base-dir "C:/Users/nszwt/clock-wiki")
+
+;; Org ファイルの保存と同時に Hugo 用 Markdown を自動エクスポート
+;; (必要に応じてコメントアウトを外してください)
+;; (add-hook 'after-save-hook
+;;           (lambda ()
+;;             (when (and (eq major-mode 'org-mode)
+;;                        (org-hugo--get-front-matter))
+;;               (org-hugo-export-wim-to-md))))
+
+;; デフォルトのエクスポート先セクション
+(setq org-hugo-default-section-directory "posts")
+
+;; 日付フォーマット (Hugo の frontmatter 用)
+(setq org-hugo-date-format "%Y-%m-%dT%T+09:00")
+
+;;; ============================================================
+;; 4. 記事テンプレート (org-capture との連携例)
+;;; ============================================================
+
+;; org-capture テンプレートに時計の事典用エントリを追加
+;; M-x org-capture → 'c' で起動
+(with-eval-after-load 'org-capture
+  (add-to-list 'org-capture-templates
+               '("c" "時計の事典 記事" entry
+                 (file "C:/Users/nszwt/clock-wiki/content-org/posts.org")
+                 "* TODO %?\n:PROPERTIES:\n:EXPORT_FILE_NAME: %(read-string \"スラッグ(英数字): \")\n:EXPORT_DATE: %<%Y-%m-%dT%T+09:00>\n:END:\n\n本文をここに記述してください。\n"
+                 :prepend t)))
+
+;;; ============================================================
+;; 5. 便利なキーバインド
+;;; ============================================================
+
+;; Org バッファ内で C-c C-e H H → カレントサブツリーをエクスポート
+;; Org バッファ内で C-c C-e H A → 全サブツリーをエクスポート
+;; これらは ox-hugo がロードされると自動的に利用可能になります。
+
+;;; emacs-setup.el ends here

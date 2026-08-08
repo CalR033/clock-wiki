@@ -1,0 +1,17 @@
+[build]
+  command   = "hugo --minify"
+  directory = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.164.0"
+  HUGO_ENV     = "production"
+  TZ           = "Asia/Tokyo"
+
+[context.production.environment]
+  HUGO_ENV = "production"
+
+[context.deploy-preview.environment]
+  HUGO_ENV = "preview"
+
+[context.branch-deploy.environment]
+  HUGO_ENV = "staging"
