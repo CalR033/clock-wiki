@@ -1,15 +1,34 @@
 baseURL = 'https://clock-wiki.pages.dev/'
-languageCode = 'ja'
+locale = 'ja'
 title = '時計の事典 - Clocks & Watches Wiki'
 defaultContentLanguage = 'ja'
 hasCJKLanguage = true
 timeZone = 'Asia/Tokyo'
 enableRobotsTXT = true
 enableGitInfo = false
+theme = 'PaperMod'
+paginate = 10
 
 [params]
   description = '時計・ウォッチに関する総合事典サイト'
   author = 'Clock Wiki Team'
+
+  # PaperMod: ホームのレイアウト (profileタイプにするとロゴ＋説明が中央表示)
+  homeInfoParams = { Title = '🕰️ 時計の事典', Content = '時計・ウォッチに関する知識を体系的にまとめた事典サイトです。' }
+
+  # PaperMod: 検索機能を有効化
+  fuseOpts = { isCaseSensitive = false, shouldSort = true, location = 0, distance = 1000, threshold = 0.4, minMatchCharLength = 2, keys = ['title', 'permalink', 'summary', 'content'] }
+
+  # PaperMod: ソーシャルアイコン（任意）
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  comments = false
+  defaultTheme = 'auto'  # light / dark / auto
 
 [markup]
   [markup.goldmark]
@@ -18,6 +37,7 @@ enableGitInfo = false
   [markup.highlight]
     style = 'monokai'
     lineNos = true
+    noClasses = false
 
 [outputs]
   home = ['HTML', 'RSS', 'JSON']
@@ -50,3 +70,8 @@ enableGitInfo = false
     name = 'タグ'
     url = '/tags/'
     weight = 40
+  [[menu.main]]
+    identifier = 'search'
+    name = '検索'
+    url = '/search/'
+    weight = 50
