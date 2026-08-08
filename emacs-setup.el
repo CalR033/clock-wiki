@@ -55,13 +55,17 @@
 ;; 4. 記事テンプレート (org-capture との連携例)
 ;;; ============================================================
 
+;; Org ファイルの置き場:
+;;   C:/Users/nszwt/Documents/org-mode/04_projects/clock/clock-wiki.org
+;;
 ;; org-capture テンプレートに時計の事典用エントリを追加
-;; M-x org-capture → 'c' で起動
+;; M-x org-capture → 'W' で起動 ('w' は他に使っている場合は変更してください)
+
 (with-eval-after-load 'org-capture
   (add-to-list 'org-capture-templates
-               '("c" "時計の事典 記事" entry
-                 (file "C:/Users/nszwt/clock-wiki/content-org/posts.org")
-                 "* TODO %?\n:PROPERTIES:\n:EXPORT_FILE_NAME: %(read-string \"スラッグ(英数字): \")\n:EXPORT_DATE: %<%Y-%m-%dT%T+09:00>\n:END:\n\n本文をここに記述してください。\n"
+               '("W" "時計の事典 記事 (clock-wiki)" entry
+                 (file "C:/Users/nszwt/Documents/org-mode/04_projects/clock/clock-wiki.org")
+                 "* TODO %?\n:PROPERTIES:\n:EXPORT_FILE_NAME: %(read-string \"スラッグ(英数字): \")\n:EXPORT_DATE: %<%Y-%m-%dT%T+09:00>\n:EXPORT_TAGS[]: \n:EXPORT_CATEGORIES[]: \n:END:\n\n%i\n"
                  :prepend t)))
 
 ;;; ============================================================
