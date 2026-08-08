@@ -1,6 +1,6 @@
 baseURL = 'https://clock-wiki.pages.dev/'
 locale = 'ja'
-title = '時計の事典 - Clocks & Watches Wiki'
+title = '時計の事典 - Clock Wiki'
 defaultContentLanguage = 'ja'
 hasCJKLanguage = true
 timeZone = 'Asia/Tokyo'
@@ -10,11 +10,11 @@ theme = 'PaperMod'
 paginate = 10
 
 [params]
-  description = '時計・ウォッチに関する総合事典サイト'
+  description = 'クロック（掛け時計・置時計など）に関する総合事典サイト'
   author = 'Clock Wiki Team'
 
   # PaperMod: ホームのレイアウト (profileタイプにするとロゴ＋説明が中央表示)
-  homeInfoParams = { Title = '🕰️ 時計の事典', Content = '時計・ウォッチに関する知識を体系的にまとめた事典サイトです。' }
+  homeInfoParams = { Title = '🕰️ 時計の事典', Content = 'クロック（掛け時計・置時計など）に関する知識を体系的にまとめた事典サイトです。' }
 
   # PaperMod: 検索機能を有効化
   fuseOpts = { isCaseSensitive = false, shouldSort = true, location = 0, distance = 1000, threshold = 0.4, minMatchCharLength = 2, keys = ['title', 'permalink', 'summary', 'content'] }
